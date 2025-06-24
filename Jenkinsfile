@@ -126,10 +126,10 @@ pipeline {
                    
                       // Créer le répertoire des artefacts s'il n'existe pas
                       // echo "ARTIFACTS_DIR=${ARTIFACTS_DIR}, deployEnv=${deployEnv}, APP_NAME=${APP_NAME}, version=${version}, BUILD_NUMBER=${BUILD_NUMBER}"
-                   sh "sudo mkdir -p ${ARTIFACTS_DIR}/${deployEnv}"
+                   sh "mkdir -p ${ARTIFACTS_DIR}/${deployEnv}"
                         
                        // Copier le WAR avec un nom incluant la version
-                   sh "sudo cp target/${APP_NAME}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war"
+                   sh "cp target/${APP_NAME}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war"
                         
                        // Créer un lien symbolique vers la dernière version
                    sh "ln -sf ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-latest.war"
